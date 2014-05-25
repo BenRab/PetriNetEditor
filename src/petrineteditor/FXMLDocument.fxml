@@ -2,10 +2,10 @@
 
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="petrineteditor.FXMLDocumentController">
@@ -16,44 +16,43 @@
           <items>
             <MenuItem mnemonicParsing="false" onAction="#handleNew" text="New" />
             <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
+            <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
+            <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save As…" />
+            <MenuItem mnemonicParsing="false" onAction="#handleRevert" text="Revert" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" onAction="#handlePreferences" text="Preferences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#handleQuit" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
+            <MenuItem mnemonicParsing="false" onAction="#handleUndo" text="Undo" />
+            <MenuItem mnemonicParsing="false" onAction="#handleRedo" text="Redo" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" onAction="#handleCut" text="Cut" />
+            <MenuItem mnemonicParsing="false" onAction="#handleCopy" text="Copy" />
+            <MenuItem mnemonicParsing="false" onAction="#handlePast" text="Paste" />
+            <MenuItem mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
+            <MenuItem mnemonicParsing="false" onAction="#handleSelectAll" text="Select All" />
+            <MenuItem mnemonicParsing="false" onAction="#handleUnselectAll" text="Unselect All" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" onAction="#handleAcout" text="About" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
     <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane>
+        <AnchorPane fx:id="elements">
           <children>
-            <Label fx:id="label1" alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
+            <Label fx:id="label1" alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Elemente" textAlignment="CENTER" wrapText="false">
               <font>
                 <Font size="18.0" fx:id="x1" />
               </font>
@@ -63,14 +62,16 @@
             </Label>
           </children>
         </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
-          <content>
-            <AnchorPane fx:id="a" id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
-              <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" /><Canvas height="200.0" layoutX="70.0" layoutY="51.0" width="200.0" />
-              </children>
-            </AnchorPane>
-          </content>
+        <ScrollPane prefHeight="-1.0" prefWidth="-1.0" >
+<content><TabPane tabClosingPolicy="UNAVAILABLE">
+  <tabs>
+    <Tab text="Untitled Tab 1" />
+    <Tab text="Untitled Tab 2" />
+  </tabs>
+</TabPane>
+<AnchorPane fx:id="a" >
+</AnchorPane> 
+</content>
         </ScrollPane>
         <AnchorPane>
           <children>
